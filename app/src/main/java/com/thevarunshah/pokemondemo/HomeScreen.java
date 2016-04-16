@@ -37,10 +37,6 @@ public class HomeScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_screen);
 
-        for(int i = 0; i < 20; i++){
-            list.add("i: " + Integer.toString(i+1));
-        }
-
         //obtain list view and create new list custom adapter
         listView = (ListView) findViewById(R.id.listview);
         listAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
