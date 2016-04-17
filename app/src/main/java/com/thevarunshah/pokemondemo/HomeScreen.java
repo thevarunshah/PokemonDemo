@@ -35,7 +35,7 @@ public class HomeScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_screen);
+        setContentView(R.layout.home_screen); //connect the layout file to this activity
 
         //obtain list view and create new list custom adapter
         listView = (ListView) findViewById(R.id.listview);
@@ -44,15 +44,18 @@ public class HomeScreen extends AppCompatActivity {
         //attach adapter to list view
         listView.setAdapter(listAdapter);
 
+        //fetch button from layout
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.add_item);
+        //add an on click listener for when the user taps on the button
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Log.i("home screen", "fab clicked");
-                Snackbar snackbar = Snackbar.make(v, "it works!", Snackbar.LENGTH_SHORT);
+                Log.i("home screen", "fab clicked"); //how to do logging in android
+                Snackbar snackbar = Snackbar.make(v, "it works!", Snackbar.LENGTH_SHORT); //how to show a message at the bottom of the screen
                 snackbar.show();
 
+                //how to go from one activity to another
                 //start add item activity and wait for result (in onActivityResult(...))
                 Intent i = new Intent(HomeScreen.this, NewPokemon.class);
                 startActivityForResult(i, 0);
@@ -65,7 +68,7 @@ public class HomeScreen extends AppCompatActivity {
 
         if(resultCode == RESULT_OK && requestCode == 0){
 
-            String item = data.getStringExtra("text");
+            String item = data.getStringExtra("text"); //fetch data passed from previous activity
 
             //add item to main list and update view
             list.add(item);
@@ -87,6 +90,7 @@ public class HomeScreen extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.get_pokemons:
+                //perform a get-request
                 UpdateListTask task = new UpdateListTask();
                 task.execute(new String[] { "http://koolaid.ngrok.io/pokemon" });
                 return true;
@@ -94,18 +98,22 @@ public class HomeScreen extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //how to run an asynchronous task in the background
     private class UpdateListTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... urls) {
+
             String response = "";
             for (String url : urls) {
                 HttpURLConnection urlConnection = null;
                 try {
+                    //make get-reqquest
                     URL _url = new URL(url);
                     urlConnection = (HttpURLConnection) _url.openConnection();
                     InputStream in = new BufferedInputStream(urlConnection.getInputStream());
                     response = readStream(in);
-                    Log.i("work", "got response");
+
+                    //parse the JSON response
                     JSONObject json = new JSONObject(response);
                     JSONArray jsonArray = json.getJSONArray("pokemon");
                     list.clear();
@@ -126,13 +134,17 @@ public class HomeScreen extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
+
+            //when done with the asynchronous task, update the list view
             if(!result.equals("")){
                 listAdapter.notifyDataSetChanged();
             }
         }
     }
 
+    //parsing the response to a string
     private String readStream(InputStream is) {
+
         try {
             String response = "";
             BufferedReader buffer = new BufferedReader(new InputStreamReader(is));

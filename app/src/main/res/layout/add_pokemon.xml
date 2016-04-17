@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:padding="20dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Enter Name:"
+        android:text="@string/name_text"
         android:id="@+id/text_new_pokemon"
         />
 

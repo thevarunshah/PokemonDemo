@@ -2,4 +2,5 @@
     <string name="app_name">PokemonDemo</string>
     <string name="name_text">Enter Name:</string>
     <string name="add_button_text"><b>Add</b></string>
+    <string name="update_list_text">Update List</string>
 </resources>

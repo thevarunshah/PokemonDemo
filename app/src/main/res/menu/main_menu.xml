@@ -3,6 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/get_pokemons"
-          android:title="Update List"
+          android:title="@string/update_list_text"
           app:showAsAction="always"/>
 </menu>
