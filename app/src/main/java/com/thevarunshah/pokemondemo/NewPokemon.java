@@ -9,6 +9,9 @@ import android.widget.EditText;
 
 public class NewPokemon extends AppCompatActivity {
 
+    /*
+    This method is where the activity layout is set up
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

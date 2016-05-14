@@ -32,6 +32,9 @@ public class HomeScreen extends AppCompatActivity {
     private ListView listView = null; //main view of list
     ArrayAdapter<String> listAdapter = null; //how to manage the list
 
+    /*
+    This method is where the activity layout is set up
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +66,9 @@ public class HomeScreen extends AppCompatActivity {
         });
     }
 
+    /*
+    This method waits for the user to finish another activity and processes the results
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -76,6 +82,9 @@ public class HomeScreen extends AppCompatActivity {
         }
     }
 
+    /*
+    This method sets up the action bar menu options
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -85,6 +94,9 @@ public class HomeScreen extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    /*
+    This method detects when options from the menu are selected
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
