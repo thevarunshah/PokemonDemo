@@ -1,5 +1,7 @@
 # Pokemon
-Android tech talk demo for hackRU
+Android tech talk demo for hackRU.
+
+This talk was for those more familiar with Android development as it covers more advanced features such as making HTTP requests and manipulating JSON objects. For a more beginner-friendly talk/guide, refer to this: https://github.com/thevarunshah/ToDoList
 
 # Project location
 All of the relevant project files are located under <b>app/src/main</b>
